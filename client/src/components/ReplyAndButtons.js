@@ -49,7 +49,7 @@ const ReplyAndButtons = ({ isMobile, reply, postId, commentId, user }) => {
             multiline
             required
             fullWidth
-            rows={2}
+            minRows={2}
             rowsMax={Infinity}
             value={editInput}
             onChange={(e) => setEditInput(e.target.value)}

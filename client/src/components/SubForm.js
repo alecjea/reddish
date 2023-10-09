@@ -20,10 +20,7 @@ const validationSchema = yup.object({
     .required('Required')
     .max(20, 'Must be at most 20 characters')
     .min(3, 'Must be at least 3 characters')
-    .matches(
-      /^[a-zA-Z0-9-_]*$/,
-      'Only alphanumeric characters allowed, no spaces/symbols'
-    ),
+    .matches(/^[a-zA-Z0-9-_]*$/, 'Only alphanumeric characters allowed, no spaces/symbols'),
   description: yup
     .string()
     .required('Required')
@@ -42,9 +39,7 @@ const SubForm = () => {
       setSubmitting(true);
       await dispatch(addNewSub(values));
       setSubmitting(false);
-      dispatch(
-        notify(`New subreddish created: r/${values.subredditName}`, 'success')
-      );
+      dispatch(notify(`New subreddish created: r/${values.subredditName}`, 'success'));
       history.push(`/r/${values.subredditName}`);
     } catch (err) {
       setSubmitting(false);
@@ -63,11 +58,7 @@ const SubForm = () => {
         {({ isSubmitting }) => (
           <Form className={classes.form}>
             <div className={classes.input}>
-              <Typography
-                className={classes.inputIconText}
-                color="primary"
-                variant="h5"
-              >
+              <Typography className={classes.inputIconText} color="primary" variant="h5">
                 r/
               </Typography>
               <TextInput
@@ -90,7 +81,7 @@ const SubForm = () => {
                 fullWidth
                 variant="outlined"
                 multiline
-                rows={2}
+                minRows={2}
                 maxRows={Infinity}
               />
             </div>
@@ -108,11 +99,7 @@ const SubForm = () => {
           </Form>
         )}
       </Formik>
-      <AlertMessage
-        error={error}
-        severity="error"
-        clearError={() => setError(null)}
-      />
+      <AlertMessage error={error} severity="error" clearError={() => setError(null)} />
     </div>
   );
 };

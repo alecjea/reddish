@@ -10,7 +10,7 @@ const connectToDB = async () => {
       useFindAndModify: false,
     });
 
-    console.log('Connected to MongoDB!');
+    console.log('Connected to MongoDsdasdasdB!');
   } catch (error) {
     console.error(`Error while connecting to MongoDB: `, error.message);
   }

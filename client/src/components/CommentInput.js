@@ -39,9 +39,7 @@ const CommentInput = ({ user, postId, isMobile }) => {
           </Link>
         </Typography>
       ) : (
-        <Typography variant="body1">
-          Log in or sign up to leave a comment
-        </Typography>
+        <Typography variant="body1">Log in or sign up to leave a comment</Typography>
       )}
       <form className={classes.form} onSubmit={handlePostComment}>
         <TextField
@@ -49,7 +47,7 @@ const CommentInput = ({ user, postId, isMobile }) => {
           multiline
           fullWidth
           required
-          rows={4}
+          minRows={4}
           rowsMax={Infinity}
           value={comment}
           onChange={(e) => setComment(e.target.value)}

@@ -10,7 +10,7 @@ export const TextInput = ({
   fullWidth,
   InputProps,
   multiline,
-  rows,
+  minRows,
   rowsMax,
   variant,
   size,
@@ -29,7 +29,7 @@ export const TextInput = ({
       required={required}
       fullWidth
       multiline={multiline}
-      rows={rows}
+      minRows={minRows}
       rowsMax={rowsMax}
       variant={variant}
       size={size}

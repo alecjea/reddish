@@ -111,11 +111,7 @@ const AddPostForm = ({
           linkSubmission: actionType === 'edit' ? linkSubmission : '',
           imageSubmission: '',
           subreddit:
-            actionType === 'edit'
-              ? postToEditSub.id
-              : !fromSubreddit
-              ? ''
-              : fromSubreddit.id,
+            actionType === 'edit' ? postToEditSub.id : !fromSubreddit ? '' : fromSubreddit.id,
         }}
         onSubmit={actionType === 'edit' ? handleUpdatePost : handleAddPost}
         validationSchema={validationSchema}
@@ -123,34 +119,24 @@ const AddPostForm = ({
         {({ isSubmitting, values, setFieldValue }) => (
           <Form className={classes.form}>
             {actionType !== 'edit' && (
-              <ButtonGroup
-                color="secondary"
-                fullWidth
-                className={classes.typeBtnGroup}
-              >
+              <ButtonGroup color="secondary" fullWidth className={classes.typeBtnGroup}>
                 <Button
                   onClick={() => setFieldValue('postType', 'Text')}
-                  variant={
-                    values.postType === 'Text' ? 'contained' : 'outlined'
-                  }
+                  variant={values.postType === 'Text' ? 'contained' : 'outlined'}
                 >
                   <TextFormatIcon style={{ marginRight: 2 }} />
                   Text
                 </Button>
                 <Button
                   onClick={() => setFieldValue('postType', 'Image')}
-                  variant={
-                    values.postType === 'Image' ? 'contained' : 'outlined'
-                  }
+                  variant={values.postType === 'Image' ? 'contained' : 'outlined'}
                 >
                   <ImageIcon style={{ marginRight: 5 }} />
                   Image
                 </Button>
                 <Button
                   onClick={() => setFieldValue('postType', 'Link')}
-                  variant={
-                    values.postType === 'Link' ? 'contained' : 'outlined'
-                  }
+                  variant={values.postType === 'Link' ? 'contained' : 'outlined'}
                 >
                   <LinkIcon style={{ marginRight: 5 }} />
                   Link
@@ -158,18 +144,12 @@ const AddPostForm = ({
               </ButtonGroup>
             )}
             <div className={classes.input}>
-              <Typography
-                className={classes.inputIconText}
-                color="primary"
-                variant="h5"
-              >
+              <Typography className={classes.inputIconText} color="primary" variant="h5">
                 r/
               </Typography>
               <Autocomplete
                 name="subreddit"
-                onChange={(e, value) =>
-                  setFieldValue('subreddit', value ? value.id : '')
-                }
+                onChange={(e, value) => setFieldValue('subreddit', value ? value.id : '')}
                 fullWidth
                 options={subs && subs.allSubs}
                 disabled={actionType === 'edit' || !!fromSubreddit}
@@ -215,7 +195,7 @@ const AddPostForm = ({
                   required={values.postType === 'Text'}
                   fullWidth
                   variant="outlined"
-                  rows={4}
+                  minRows={4}
                   maxRows={Infinity}
                 />
               </div>
@@ -238,13 +218,7 @@ const AddPostForm = ({
                     variant="outlined"
                     color="primary"
                     fullWidth
-                    startIcon={
-                      values.imageSubmission ? (
-                        <CheckCircleIcon />
-                      ) : (
-                        <PublishIcon />
-                      )
-                    }
+                    startIcon={values.imageSubmission ? <CheckCircleIcon /> : <PublishIcon />}
                     size={isMobile ? 'small' : 'medium'}
                     className={classes.selectBtn}
                   >
@@ -265,11 +239,7 @@ const AddPostForm = ({
                 </div>
                 {values.imageSubmission && (
                   <div className={classes.imagePreview}>
-                    <img
-                      alt={fileName}
-                      src={values.imageSubmission}
-                      width={isMobile ? 250 : 350}
-                    />
+                    <img alt={fileName} src={values.imageSubmission} width={isMobile ? 250 : 350} />
                   </div>
                 )}
               </div>
@@ -308,11 +278,7 @@ const AddPostForm = ({
           </Form>
         )}
       </Formik>
-      <AlertMessage
-        error={error}
-        severity="error"
-        clearError={() => setError(null)}
-      />
+      <AlertMessage error={error} severity="error" clearError={() => setError(null)} />
     </div>
   );
 };

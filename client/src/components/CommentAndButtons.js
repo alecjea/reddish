@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  addReply,
-  editComment,
-  deleteComment,
-} from '../reducers/postCommentsReducer';
+import { addReply, editComment, deleteComment } from '../reducers/postCommentsReducer';
 import { notify } from '../reducers/notificationReducer';
 import DeleteDialog from './DeleteDialog';
 import getErrorMsg from '../utils/getErrorMsg';
@@ -69,7 +65,7 @@ const CommentAndButtons = ({ isMobile, comment, postId, user }) => {
           <TextField
             multiline
             fullWidth
-            rows={2}
+            minRows={2}
             rowsMax={Infinity}
             value={editInput}
             onChange={(e) => setEditInput(e.target.value)}
@@ -133,7 +129,7 @@ const CommentAndButtons = ({ isMobile, comment, postId, user }) => {
             multiline
             required
             fullWidth
-            rows={4}
+            minRows={4}
             rowsMax={Infinity}
             value={replyInput}
             onChange={(e) => setReplyInput(e.target.value)}

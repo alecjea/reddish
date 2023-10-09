@@ -18,14 +18,7 @@ import ErrorPage from './ErrorPage';
 import LoadingSpinner from './LoadingSpinner';
 import getErrorMsg from '../utils/getErrorMsg';
 
-import {
-  Container,
-  Paper,
-  Typography,
-  Button,
-  Link,
-  TextField,
-} from '@material-ui/core';
+import { Container, Paper, Typography, Button, Link, TextField } from '@material-ui/core';
 import { useSubPageStyles } from '../styles/muiStyles';
 import CakeIcon from '@material-ui/icons/Cake';
 import PersonIcon from '@material-ui/icons/Person';
@@ -88,15 +81,8 @@ const SubPage = () => {
     );
   }
 
-  const {
-    subredditName,
-    subscribedBy,
-    subscriberCount,
-    description,
-    admin,
-    createdAt,
-    id,
-  } = subPage.subDetails;
+  const { subredditName, subscribedBy, subscriberCount, description, admin, createdAt, id } =
+    subPage.subDetails;
 
   const isSubscribed = user && subscribedBy.includes(user.id);
 
@@ -124,9 +110,7 @@ const SubPage = () => {
     try {
       await dispatch(editDescription(id, descInput));
       setEditOpen(false);
-      dispatch(
-        notify(`Updated description of your sub: r/${subredditName}`, 'success')
-      );
+      dispatch(notify(`Updated description of your sub: r/${subredditName}`, 'success'));
     } catch (err) {
       dispatch(notify(getErrorMsg(err), 'error'));
     }
@@ -176,7 +160,7 @@ const SubPage = () => {
                     multiline
                     required
                     fullWidth
-                    rows={2}
+                    minRows={2}
                     rowsMax={Infinity}
                     value={descInput}
                     onChange={(e) => setDescInput(e.target.value)}
@@ -219,20 +203,11 @@ const SubPage = () => {
                 </Button>
               )}
             </div>
-            <Typography
-              variant="body2"
-              className={classes.iconText}
-              color="secondary"
-            >
+            <Typography variant="body2" className={classes.iconText} color="secondary">
               <CakeIcon style={{ marginRight: 5 }} /> Created
-              {' ' +
-                String(new Date(createdAt)).split(' ').slice(1, 4).join(' ')}
+              {' ' + String(new Date(createdAt)).split(' ').slice(1, 4).join(' ')}
             </Typography>
-            <Typography
-              variant="body2"
-              color="secondary"
-              className={classes.iconText}
-            >
+            <Typography variant="body2" color="secondary" className={classes.iconText}>
               <PersonIcon style={{ marginRight: 5 }} />
               Admin:
               <Link
@@ -256,11 +231,7 @@ const SubPage = () => {
                 {isSubscribed ? 'Subscribed' : 'Subscribe'}
               </Button>
             )}
-            <Typography
-              variant="body2"
-              color="primary"
-              className={classes.iconText}
-            >
+            <Typography variant="body2" color="primary" className={classes.iconText}>
               <GroupIcon style={{ marginRight: 5 }} />
               {subscriberCount} subscribers
             </Typography>
@@ -295,10 +266,7 @@ const SubPage = () => {
               )}
             </div>
             {'next' in subPage.posts && (
-              <LoadMoreButton
-                handleLoadPosts={handleLoadPosts}
-                loading={loadingMore}
-              />
+              <LoadMoreButton handleLoadPosts={handleLoadPosts} loading={loadingMore} />
             )}
           </>
         )}
